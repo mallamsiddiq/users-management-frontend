@@ -30,7 +30,7 @@ const UserUpdate = ({ user, handleUpdate, handleChange, setEditable, handleDelet
                 <ThemeButton onClick={handleUpdate}>
                 Update
                 </ThemeButton>
-                <button className="btn btn-grey mr-2" onClick={() => setEditable(false)}>
+                <button className="btn btn-secondary mr-2" onClick={() => setEditable(false)}>
                 Cancel
                 </button>
             </div>
