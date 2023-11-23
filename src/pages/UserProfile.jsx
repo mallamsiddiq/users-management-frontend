@@ -6,10 +6,14 @@ import { updateUser, deleteUser } from '../api/usersPost';
 import UserDetails from '../components/UserDetails';
 import UserUpdate from '../components/UpdateUser';
 import PageLoading from '../components/PageLoading';
+import { useError } from '../utils/contexts/ErrorContext';
 
 const UserProfile = () => {
+  const { setError } = useError();
+
   const { id } = useParams();
   const Navigate = useNavigate();
+
   const [user, setUser] = useState(null);
   const [editable, setEditable] = useState(false);
   const [editedUser, setEditedUser] = useState(null);
@@ -39,16 +43,27 @@ const UserProfile = () => {
 
   const handleUpdate = async () => {
     // Perform update API call
-    await updateUser(id, editedUser);
-    // Refresh user data after update
-    const updatedUser = await getUserById(id);
-    setUser(updatedUser);
-    setEditable(false); // Disable editing after update
+    let res = await updateUser(id, editedUser);
+    if (res && res.success) {
+        setError({message:'User Updated successfully!', type: 'success'});
+        const updatedUser = await getUserById(id);
+        // Refresh user data after update
+         // Disable editing after update
+        setUser(updatedUser);
+        setEditable(false);
+    } else {
+        setError({message: res.error, type: 'error'});
+    }
   };
 
   const handleDelete = async () => {
     // Perform delete API call
-    await deleteUser(id);
+    let res = await deleteUser(id);
+    if (res && res.success) {
+        setError({message:'User Deleted successfully!', type: 'success'});
+    } else {
+        setError({message: res.error, type: 'error'});
+    }
     // Redirect to home page after deletion
     Navigate('/');
   };

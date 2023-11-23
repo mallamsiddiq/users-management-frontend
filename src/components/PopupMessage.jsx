@@ -30,7 +30,11 @@ const PopupMessage = () => {
   return (
     <>
       {errorMessage.message && (
-        <div className={`alert ${getColorClass()} alert-dismissible fade show`} role="alert">
+        <div
+        className={`container alert ${getColorClass()} alert-dismissible fade show position-fixed top-6 right-3`}
+        role="alert"
+        style={{ zIndex: 1000 }} // Adjust the z-index as needed
+      >
           {errorMessage.message}
           <button type="button" className="btn-close" aria-label="Close" onClick={clearError}></button>
         </div>
