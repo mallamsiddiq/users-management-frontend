@@ -15,6 +15,7 @@ const UserProfile = () => {
   const [editedUser, setEditedUser] = useState(null);
 
   useEffect(() => {
+    
     const fetchUser = async () => {
       const fetchedUser = await getUserById(id);
       setUser(fetchedUser);
@@ -23,6 +24,9 @@ const UserProfile = () => {
 
     fetchUser();
   }, [id]);
+
+  
+  document.title = `${user? user.name :''} | Users Management`
 
   const handleEditToggle = () => {
     setEditable(!editable);

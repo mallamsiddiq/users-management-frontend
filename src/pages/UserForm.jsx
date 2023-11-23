@@ -32,6 +32,7 @@ const UserForm = () => {
         },
     });
     const [showFieldError, setShowFieldError] = useState(false);
+    document.title = `Add User | Users Management`
 
     const handleChange = (e) => {
         const { name, value } = e.target;

@@ -11,6 +11,7 @@ const Home = () => {
   const {darkMode} = useTheme()
 
   useEffect(() => {
+    document.title = "Home | Users Management"
     const fetchUsers = async () => {
       const fetchedUsers = await getUsers();
       setUsers(fetchedUsers);
