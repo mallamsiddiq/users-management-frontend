@@ -1,5 +1,5 @@
 // Navbar.js
-import { useState } from 'react';
+import React, { useState } from 'react';
 import ThemeToggle from './ThemeToggle';
 import { useTheme } from '../utils/contexts/ThemeContext';
 import { CustomNavLink } from './ThemeToggle';

@@ -1,4 +1,5 @@
 // contexts/ErrorContext.js
+import React from 'react';
 import { createContext, useContext, useState } from 'react';
 
 const ErrorContext = createContext();
